@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Asistente de inteligencia artificial</title>
+  <rect width="64" height="64" rx="14" fill="#087c72"/>
+  <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="3">
+    <path d="M32 10v10M13 25h10M41 25h10M13 39h10M41 39h10M32 44v10"/>
+  </g>
+  <g fill="#c85c49">
+    <circle cx="32" cy="9" r="3"/>
+    <circle cx="12" cy="25" r="3"/>
+    <circle cx="52" cy="25" r="3"/>
+    <circle cx="12" cy="39" r="3"/>
+    <circle cx="52" cy="39" r="3"/>
+    <circle cx="32" cy="55" r="3"/>
+  </g>
+  <rect x="23" y="20" width="18" height="24" rx="5" fill="#ffffff"/>
+  <g fill="none" stroke="#087c72" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
+    <path d="m28 28 4 4 5-6M28 37h8"/>
+  </g>
+</svg>

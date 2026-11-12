@@ -1,0 +1,239 @@
+:root {
+	color-scheme: light;
+	--page: #f2f7f5;
+	--surface: #ffffff;
+	--ink: #1d3033;
+	--muted: #526669;
+	--line: #d7e4e0;
+	--accent: #087c72;
+	--accent-dark: #05645d;
+	--accent-soft: #e5f3ef;
+	--coral: #c85c49;
+	--focus: #e7a72e;
+	--danger: #a52e38;
+}
+
+html {
+	min-width: 320px;
+	background: var(--page);
+}
+
+body {
+	min-height: 100vh;
+	color: var(--ink);
+	background:
+		linear-gradient(135deg, rgb(8 124 114 / 4%), transparent 42%),
+		var(--page);
+	font-family: "Segoe UI", Tahoma, sans-serif;
+	line-height: 1.6;
+}
+
+header.container {
+	padding-top: clamp(2rem, 6vw, 4.5rem) !important;
+	padding-bottom: 1.75rem !important;
+}
+
+header h1 {
+	max-width: 18ch;
+	margin-bottom: 0.6rem;
+	color: var(--ink);
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: clamp(2rem, 5vw, 3.25rem);
+	font-weight: 700;
+	line-height: 1.12;
+}
+
+header p {
+	max-width: 62ch;
+	margin: 0;
+	color: var(--muted);
+	font-size: 1.05rem;
+}
+
+main.container {
+	max-width: 850px;
+}
+
+.card {
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	background-color: var(--surface);
+	box-shadow: 0 12px 32px rgb(29 48 51 / 6%);
+}
+
+.card-body {
+	padding: clamp(1.25rem, 4vw, 2rem);
+}
+
+#form-title,
+#response-title {
+	margin-bottom: 1.5rem;
+	color: var(--ink);
+	font-weight: 700;
+}
+
+.form-label {
+	margin-bottom: 0.45rem;
+	color: var(--ink);
+	font-weight: 650;
+}
+
+.form-control,
+.form-select {
+	min-height: 48px;
+	border-color: #b9cbc6;
+	border-radius: 6px;
+	color: var(--ink);
+	background-color: #fff;
+}
+
+textarea.form-control {
+	min-height: 140px;
+	resize: vertical;
+}
+
+.form-control::placeholder {
+	color: #647779;
+}
+
+.form-control:focus,
+.form-select:focus {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 0.22rem rgb(8 124 114 / 18%);
+}
+
+.form-text {
+	color: var(--muted);
+}
+
+.invalid-feedback {
+	color: var(--danger);
+	font-weight: 600;
+}
+
+.btn {
+	min-height: 46px;
+	padding: 0.6rem 1rem;
+	border-radius: 6px;
+	font-weight: 650;
+	transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.btn-primary {
+	border-color: var(--accent);
+	background-color: var(--accent);
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+	border-color: var(--accent-dark);
+	background-color: var(--accent-dark);
+}
+
+.btn-outline-secondary {
+	border-color: #8a9b9d;
+	color: #34484b;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:active {
+	border-color: #34484b;
+	background-color: #34484b;
+	color: #fff;
+}
+
+.btn:active {
+	transform: translateY(1px);
+}
+
+:focus-visible {
+	outline: 3px solid var(--focus);
+	outline-offset: 3px;
+}
+
+.alert {
+	border-radius: 8px;
+}
+
+#request-status {
+	border-color: #b7d9d0;
+	background-color: var(--accent-soft);
+	color: #174e49;
+}
+
+#request-status .spinner-border {
+	color: var(--accent);
+}
+
+#error-message {
+	border-color: #e4b7b9;
+	background-color: #fff0ef;
+	color: #79232b;
+}
+
+#response-section {
+	border-top: 4px solid var(--coral);
+}
+
+#response-section dl {
+	display: grid;
+	grid-template-columns: minmax(9rem, 0.35fr) minmax(0, 1fr);
+	gap: 0.55rem 1rem;
+	margin-bottom: 1.5rem;
+}
+
+#response-section dt {
+	color: var(--muted);
+	font-weight: 650;
+}
+
+#response-section dd {
+	min-width: 0;
+	margin: 0;
+	color: var(--ink);
+	overflow-wrap: anywhere;
+}
+
+#response-text {
+	padding: 1rem;
+	border-left: 3px solid var(--accent);
+	background-color: #f3f8f6;
+	color: var(--ink);
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+footer.container {
+	color: var(--muted);
+	font-size: 0.925rem;
+}
+
+@media (max-width: 575.98px) {
+	header.container {
+		padding-top: 1.75rem !important;
+	}
+
+	#response-section dl {
+		grid-template-columns: 1fr;
+		gap: 0.15rem;
+	}
+
+	#response-section dd {
+		margin-bottom: 0.65rem;
+	}
+
+	#assistant-form .btn {
+		flex: 1 1 100%;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		 scroll-behavior: auto !important;
+		 transition-duration: 0.01ms !important;
+		 animation-duration: 0.01ms !important;
+		 animation-iteration-count: 1 !important;
+	}
+}
