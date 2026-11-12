@@ -9,6 +9,33 @@ function getElement(id) {
 	return document.getElementById(id);
 }
 
+function renderResponseMarkdown(element, markdown) {
+	const parser = window.marked;
+	const sanitizer = window.DOMPurify;
+
+	if (!parser || typeof parser.parse !== "function" || !sanitizer || typeof sanitizer.sanitize !== "function") {
+		element.textContent = markdown;
+		element.classList.add("is-plain-text");
+		return;
+	}
+
+	try {
+		const html = parser.parse(markdown);
+		element.innerHTML = sanitizer.sanitize(html, {
+			ALLOWED_TAGS: [
+				"a", "blockquote", "br", "code", "del", "em", "h1", "h2", "h3",
+				"h4", "h5", "h6", "hr", "li", "ol", "p", "pre", "strong", "ul"
+			],
+			ALLOWED_ATTR: ["href", "title"],
+			ALLOW_DATA_ATTR: false
+		});
+		element.classList.remove("is-plain-text");
+	} catch {
+		element.textContent = markdown;
+		element.classList.add("is-plain-text");
+	}
+}
+
 export function setLoadingState(isLoading) {
 	const loadingIndicator = getElement("request-status");
 	const submitButton = document.querySelector("#assistant-form button[type='submit']");
@@ -65,7 +92,7 @@ export function showResponse(data) {
 		errorMessage.hidden = true;
 	}
 	if (responseText) {
-		responseText.textContent = data.respuesta;
+		renderResponseMarkdown(responseText, data.respuesta);
 	}
 	if (responseTopic) {
 		responseTopic.textContent = data.tema;
@@ -151,6 +178,9 @@ export function resetUI() {
 		const element = getElement(id);
 		if (element) {
 			element.textContent = "";
+			if (id === "response-text") {
+				element.classList.remove("is-plain-text");
+			}
 		}
 	}
 

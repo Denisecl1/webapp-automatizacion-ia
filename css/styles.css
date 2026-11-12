@@ -199,8 +199,103 @@ textarea.form-control {
 	border-left: 3px solid var(--accent);
 	background-color: #f3f8f6;
 	color: var(--ink);
+	overflow-wrap: anywhere;
+}
+
+#response-text.is-plain-text {
 	white-space: pre-wrap;
-	word-break: break-word;
+}
+
+#response-text > :first-child {
+	margin-top: 0;
+}
+
+#response-text > :last-child {
+	margin-bottom: 0;
+}
+
+#response-text h1,
+#response-text h2,
+#response-text h3,
+#response-text h4,
+#response-text h5,
+#response-text h6 {
+	margin: 1.25rem 0 0.6rem;
+	color: var(--ink);
+	font-family: Georgia, "Times New Roman", serif;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+#response-text h1 {
+	font-size: 1.5rem;
+}
+
+#response-text h2 {
+	font-size: 1.35rem;
+}
+
+#response-text h3 {
+	font-size: 1.2rem;
+}
+
+#response-text h4,
+#response-text h5,
+#response-text h6 {
+	font-size: 1.05rem;
+}
+
+#response-text p {
+	margin: 0 0 0.9rem;
+}
+
+#response-text ul,
+#response-text ol {
+	margin: 0 0 1rem;
+	padding-inline-start: 1.5rem;
+}
+
+#response-text li + li {
+	margin-top: 0.3rem;
+}
+
+#response-text li > ul,
+#response-text li > ol {
+	margin-top: 0.3rem;
+	margin-bottom: 0;
+}
+
+#response-text blockquote {
+	margin: 1rem 0;
+	padding-left: 1rem;
+	border-left: 3px solid var(--line);
+	color: var(--muted);
+}
+
+#response-text code,
+#response-text pre {
+	overflow-wrap: anywhere;
+}
+
+#response-text code {
+	padding: 0.1em 0.3em;
+	border-radius: 4px;
+	background-color: var(--accent-soft);
+	color: var(--ink);
+	font-size: 0.9em;
+}
+
+#response-text pre {
+	margin: 0 0 1rem;
+	padding: 0.85rem;
+	border: 1px solid var(--line);
+	border-radius: 6px;
+	background-color: var(--surface);
+}
+
+#response-text pre code {
+	padding: 0;
+	background: transparent;
 }
 
 footer.container {
