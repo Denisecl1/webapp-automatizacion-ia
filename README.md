@@ -92,27 +92,30 @@ Como cualquier persona puede invocar un Webhook público, valida entradas y limi
 
 El uso local sigue llamando al Webhook público configurado; no es una simulación. La prueba requiere que el workflow de producción esté activo y que n8n permita el origen local mediante CORS.
 
-## Pruebas previstas
+## Pruebas
 
-Estas pruebas están pendientes; no se afirma que la comunicación desde el navegador o la publicación ya se hayan verificado.
+Pruebas completadas en localhost y en GitHub Pages:
 
-1. Enviar el formulario vacío y comprobar que aparecen errores junto a los cuatro campos, sin POST.
-2. Probar preguntas con menos de 10 y más de 500 caracteres, y comprobar la normalización de espacios.
-3. Seleccionar **Nodo OpenAI** (`nativo`), enviar una pregunta no sensible y comprobar en **Network** el POST JSON con exactamente `tema`, `nivel`, `pregunta` e `integracion`. Confirmar que n8n toma la rama nativa y devuelve el contrato JSON acordado.
-4. Repetir con **HTTP Request / Responses API** (`http`) y confirmar que n8n toma la rama HTTP y devuelve el mismo contrato.
-5. Verificar que la respuesta se presenta sin recargar la página, que los saltos de línea se conservan y que el contenido se muestra como texto, no como HTML.
-6. Comprobar el botón de limpiar, el estado de carga y que no se envíen solicitudes duplicadas.
-7. Probar errores HTTP, respuesta no JSON, respuesta con estructura incorrecta, fallo de red/CORS y timeout; confirmar que se informa el problema y se conservan los datos para reintentar.
+- Visualización correcta de la interfaz.
+- Validación de campos obligatorios.
+- Validación de preguntas con menos de 10 caracteres.
+- Funcionamiento del botón **Limpiar**.
+- Integración nativa con OpenAI (`nativo`).
+- Integración **HTTP Request / Responses API** (`http`).
+- Envío mediante POST de los cuatro campos: `tema`, `nivel`, `pregunta` e `integracion`.
+- Recepción de una respuesta JSON correcta desde n8n en ambas integraciones.
+
+Pruebas que todavía están pendientes:
+
+- Probar preguntas con más de 500 caracteres y comprobar la normalización de espacios.
+- Verificar que la respuesta se presenta sin recargar la página, que los saltos de línea se conservan y que el contenido se muestra como texto, no como HTML.
+- Comprobar el estado de carga y que no se envíen solicitudes duplicadas.
+- Probar errores HTTP, respuesta no JSON, respuesta con estructura incorrecta, fallo de red/CORS y timeout; confirmar que se informa el problema y se conservan los datos para reintentar.
 
 Para diagnosticar CORS, revisa **Network**: con JSON debe aparecer una solicitud `OPTIONS` antes del `POST`. Si la prevalidación falla, revisa la respuesta CORS del Webhook en n8n; un error CORS no se corrige desde el frontend.
 
 ## Publicación en GitHub Pages
 
-1. Crea un repositorio en GitHub y sube el contenido del proyecto a la rama `main`.
-2. En el repositorio, abre **Settings > Pages**.
-3. En **Build and deployment**, selecciona **Deploy from a branch**.
-4. Elige la rama `main` y la carpeta `/(root)`, y guarda los cambios.
-5. Espera a que termine el despliegue y abre la URL HTTPS que GitHub Pages indique, normalmente `https://<usuario>.github.io/<repositorio>/`.
-6. Repite las pruebas previstas desde esa URL. Configura CORS en n8n para permitir el origen publicado exacto y verifica que las rutas relativas de los módulos carguen bajo la subruta del repositorio.
+La aplicación está publicada y probada correctamente en [https://denisecl1.github.io/webapp-automatizacion-ia/](https://denisecl1.github.io/webapp-automatizacion-ia/). La interfaz, ambas integraciones y la respuesta JSON desde n8n se verificaron también desde esta URL.
 
-La publicación y las pruebas desde GitHub Pages aún están pendientes. El proyecto solo debe considerarse verificado cuando ambas integraciones respondan correctamente desde el sitio publicado.
+Quedan pendientes las pruebas adicionales enumeradas en la sección **Pruebas**; la publicación y las integraciones nativa y HTTP ya se completaron.
